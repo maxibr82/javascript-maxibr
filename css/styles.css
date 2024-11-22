@@ -1,0 +1,146 @@
+/* Estilos básicos para el contenedor de productos y tarjetas */
+
+body {
+    font-family: "Roboto", sans-serif;
+    flex-direction: column;
+    font-family: "Roboto", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #c4c4c4b2;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 50vh;
+
+}
+
+
+.products {
+    padding: 20px;
+    text-align: center;
+}
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    width: 150px;
+    text-align: center;
+    background-color: #fff;
+}
+.product-card:hover {
+    box-shadow: 0 0 10px rgba(99, 120, 25, 0.779);
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.product-card h2 {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.product-card p {
+    font-size: 1em;
+    color: #333;
+}
+
+.product-card button {
+    padding: 10px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.product-card button:hover {
+    background-color: #218838;
+}
+
+/* Estilos del carrito */
+.cart {
+    margin-top: 20px;
+    padding: 20px;
+    margin: 30px;
+    border: 1px solid #ddd;
+    width: 300px;
+    float: right;
+    background-color: #fcfffd9e;
+}
+
+.cart ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.cart .cart-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.cart .delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: red;
+}
+
+/* Notificación */
+.notification {
+    display: none;
+    background-color: #f44336;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+.notification.show {
+    display: block;
+}
+
+
+/* Estilo de notificación por defecto */
+.notification {
+    display: none;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+/* Mostrar la notificación */
+.notification.show {
+    display: block;
+}
+
+/* Estilo de éxito (verde) */
+.notification.success {
+    background-color: #4caf50;
+    color: white;
+}
+
+/* Estilo de advertencia (amarillo) */
+.notification.warning {
+    background-color: #ffc107;
+    color: black;
+}
+
+/* Estilo de error (rojo) */
+.notification.error {
+    background-color: #f44336;
+    color: white;
+}
+
+
