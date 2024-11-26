@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,39 +7,35 @@
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-
 <body>
+    <!-- Barra de búsqueda de productos -->
+    <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Buscar productos..." onkeyup="searchProducts()">
+        <button onclick="searchProducts()">Buscar</button>
+    </div>
 
-
+    <!-- Carrito de compras -->
     <div class="cart">
-
         <div id="notification" class="notification hidden">Has alcanzado el límite de 20 productos en el carrito.</div>
-
-        <div class="filter">
-            <input type="text" id="search-input" placeholder="Buscar producto..." oninput="filterProducts()">
-            <button onclick="filterProducts()">Filtrar</button>
-        </div>
-        <h3>Carrito</h3>
+        <h3>
+            <span class="cart-title">Carrito</span>
+            <span class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-counter" class="cart-counter">0</span>
+            </span>
+        </h3>
+        
         <ul id="cart-items"></ul>
         <button onclick="clearCart()" class="clear-cart-btn">Vaciar Carrito</button>
-        <button onclick="calculateTotal()" class="calculate-total-btn">Calcular Total</button>
-
-
-        <div id="totals">
-            <p>Total sin IVA: $0.00</p>
-            <p>IVA (21%): $0.00</p>
-            <p>Total con IVA: $0.00</p>
-        </div>
+        <p id="total-price">Total: $0.00</p>
     </div>
 
-
+    <!-- Productos -->
     <div class="products">
         <h1>Nuestros Productos</h1>
-        <div id="product-list" class="product-list">
-        </div>
+        <div id="product-list" class="product-list"></div>
     </div>
 
-    <script src="./java/java.js"></script>
+    <script src="./javaScript/java.js"></script>
 </body>
-
 </html>
