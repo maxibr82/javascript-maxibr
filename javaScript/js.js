@@ -1,3 +1,74 @@
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const themeToggle = document.getElementById('theme-toggle');
+    const usernameInput = document.getElementById('username');
+    const saveUsernameButton = document.getElementById('save-username');
+    const userSelect = document.getElementById('user-select');
+    const greeting = document.getElementById('greeting');
+    const errorContainer = document.getElementById('error-container');
+
+    const users = JSON.parse(localStorage.getItem('users')) || {};
+
+    const updateUserSelect = () => {
+        userSelect.innerHTML = '<option value="" disabled selected>Selecciona un usuario</option>';
+        Object.keys(users).forEach((username) => {
+            const option = document.createElement('option');
+            option.value = username;
+            option.textContent = username;
+            userSelect.appendChild(option);
+        });
+    };
+
+    updateUserSelect();
+
+    const applyTheme = (theme) => {
+        document.body.className = theme || 'light-mode';
+    };
+
+    const showError = (message) => {
+        errorContainer.textContent = message;
+        errorContainer.style.display = 'block';
+        setTimeout(() => (errorContainer.style.display = 'none'), 3000);
+    };
+
+    saveUsernameButton.addEventListener('click', () => {
+        const username = usernameInput.value.trim();
+        username
+            ? (users[username] = users[username] || { theme: 'light-mode' },
+                localStorage.setItem('users', JSON.stringify(users)),
+                greeting.textContent = `¡Bienvenido, ${username}!`,
+                updateUserSelect(),
+                (usernameInput.value = ''))
+            : showError('Por favor, ingresa un nombre válido.');
+    });
+
+    userSelect.addEventListener('change', () => {
+        const selectedUser = userSelect.value;
+        if (selectedUser) {
+            const { theme } = users[selectedUser];
+            greeting.textContent = `¡Bienvenido, ${selectedUser}!`;
+            applyTheme(theme);
+        }
+    });
+
+    themeToggle.addEventListener('click', () => {
+        const selectedUser = userSelect.value;
+        selectedUser
+            ? (() => {
+                const currentTheme = users[selectedUser].theme;
+                const newTheme = currentTheme === 'dark-mode' ? 'light-mode' : 'dark-mode';
+                users[selectedUser].theme = newTheme;
+                localStorage.setItem('users', JSON.stringify(users));
+                applyTheme(newTheme);
+            })()
+            : showError('Selecciona un usuario para cambiar el tema.');
+    });
+});
+
+
+
+
 class Producto {
     constructor(id = 0, nombre = "", precio = 0, imagenUrl = "") {
         this.id = id;
@@ -12,10 +83,10 @@ const notification = document.getElementById("notification");
 const totalPriceDisplay = document.getElementById("total-price");
 const productList = document.getElementById("product-list");
 
-const maxItems = 20; // Límite de productos en el carrito
-const ivaPercentage = 0.21; // 21% de IVA
+const maxItems = 20; 
+const ivaPercentage = 0.21; 
 
-// Array de productos usando la clase Producto
+
 let productos = [
     new Producto(1, "Compu 1", 10.00, "https://via.placeholder.com/150"),
     new Producto(2, "Producto 2", 15.00, "https://via.placeholder.com/150"),
@@ -25,9 +96,9 @@ let productos = [
     new Producto(6, "Producto 6", 30.00, "https://via.placeholder.com/150")
 ];
 
-// Función para generar las tarjetas de productos dinámicamente
+
 function generateProductCards(filteredProducts = productos) {
-    productList.innerHTML = ''; // Limpiar productos anteriores
+    productList.innerHTML = ''; 
 
     filteredProducts.forEach(producto => {
         const productCard = document.createElement("div");
@@ -44,11 +115,11 @@ function generateProductCards(filteredProducts = productos) {
     });
 }
 
-// Función para agregar productos al carrito
+
 function addToCart(id, name, price) {
     if (cartItems.children.length >= maxItems) {
         showNotification();
-        return; // Sale de la función si el límite está alcanzado
+        return; 
     }
 
     const item = document.createElement("li");
@@ -75,7 +146,7 @@ function addToCart(id, name, price) {
     hideNotificationIfNeeded();
 }
 
-// Nueva función para confirmar y eliminar un producto del carrito
+
 function confirmAndDeleteItem(item) {
     const confirmed = confirm("¿Estás seguro de que deseas eliminar este producto del carrito?");
     if (confirmed) {
@@ -86,7 +157,6 @@ function confirmAndDeleteItem(item) {
     }
 }
 
-// Función para vaciar el carrito
 function clearCart() {
     const confirmed = confirm("¿Estás seguro de que deseas vaciar el carrito?");
     if (confirmed) {
@@ -97,24 +167,24 @@ function clearCart() {
     }
 }
 
-// Función para mostrar la notificación
+
 function showNotification() {
     notification.classList.add("show");
 }
 
-// Función para ocultar la notificación
+
 function hideNotification() {
     notification.classList.remove("show");
 }
 
-// Función para ocultar la notificación si el número de productos es menor que el máximo
+
 function hideNotificationIfNeeded() {
     if (cartItems.children.length < maxItems) {
         hideNotification();
     }
 }
 
-// Función para actualizar el total
+
 function updateTotal() {
     let total = 0;
 
@@ -133,13 +203,13 @@ function updateTotal() {
     `;
 }
 
-// Función para actualizar el contador del carrito
+
 function updateCartCounter() {
     const cartCounter = document.getElementById("cart-counter");
     cartCounter.textContent = cartItems.children.length;
 }
 
-// Función para filtrar productos según la búsqueda
+
 function searchProducts() {
     const query = document.getElementById("search-input").value.toLowerCase();
     const filteredProducts = productos.filter(producto =>
@@ -149,5 +219,5 @@ function searchProducts() {
     generateProductCards(filteredProducts);
 }
 
-// Generar las tarjetas al cargar la página
+
 generateProductCards();

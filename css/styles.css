@@ -1,20 +1,20 @@
-/* Estilos generales para el carrito */
+
 .cart {
     position: fixed;
     top: 20px;
     right: 20px;
-    width: 250px; /* Ancho fijo del carrito */
+    width: 250px;
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 10px;
     background-color: white;
-    z-index: 1000; /* Asegura que el carrito esté por encima de otros elementos */
+    z-index: 1000;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-/* Notificación de límite de productos dentro del carrito */
+
 .notification {
     background-color: #f8d7da;
     color: #721c24;
@@ -31,13 +31,13 @@
     display: none;
 }
 
-/* Estilos para las tarjetas de productos */
+
 .product-list {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    margin-top: 100px; /* Asegura que las tarjetas no queden debajo del carrito */
-    margin-right: 270px; /* Ajuste del margen a la derecha para que las tarjetas no se solapen con el carrito */
+    margin-top: 100px;
+    margin-right: 270px;
 }
 
 .product-card {
@@ -78,19 +78,17 @@
     background-color: #0056b3;
 }
 
-/* Efecto de transición en el hover */
 .product-card:hover {
-    transform: translateY(-10px); /* Eleva la tarjeta ligeramente */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Agrega sombra */
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilos para el carrito */
 #cart-items {
     list-style: none;
     padding: 0;
-    max-height: 300px; /* Altura máxima del área de productos en el carrito */
-    overflow-y: auto; /* Agrega scroll solo cuando el contenido se desborda */
-    margin-bottom: 20px; /* Espacio entre los productos y el total */
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 20px;
 }
 
 .cart-item {
@@ -98,6 +96,7 @@
     justify-content: space-between;
     padding: 10px;
     border-bottom: 1px solid #ddd;
+    color: #777;
 }
 
 .delete-btn {
@@ -123,14 +122,14 @@
 
 .cart-container {
     position: fixed;
-    top: 80px; /* Ajusta la distancia para que el carrito no se solape con la barra de búsqueda */
+    top: 80px;
     right: 20px;
     width: 250px;
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 10px;
     background-color: white;
-    z-index: 999; /* Asegura que esté debajo de la barra de búsqueda */
+    z-index: 999;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -150,7 +149,6 @@
     font-weight: bold;
 }
 
-/* Estilo del contador dentro del título del carrito */
 .cart h3 {
     display: flex;
     align-items: center;
@@ -167,11 +165,10 @@
     font-weight: bold;
 }
 
-/* Estilos para la barra de búsqueda */
 .search-bar {
     position: fixed;
-    top: 20px; /* Alineado con el carrito */
-    right: 20px; /* Alineado a la derecha */
+    top: 100px;
+    right: 20px;
     width: 250px;
     display: flex;
     align-items: center;
@@ -181,10 +178,9 @@
     border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    z-index: 1000; /* Asegura que esté por encima de los otros elementos */
+    z-index: 1000;
 }
 
-/* Estilos para el input dentro de la barra de búsqueda */
 .search-bar input {
     border: none;
     padding: 3px 5px;
@@ -194,7 +190,6 @@
     box-sizing: border-box;
 }
 
-/* Estilos para el botón dentro de la barra de búsqueda */
 .search-bar button {
     background-color: #007bff;
     color: white;
@@ -208,23 +203,21 @@
     background-color: #0056b3;
 }
 
-/* Estilos para el carrito */
 .cart {
     position: fixed;
-    top: 80px; /* Ajusta la distancia para que el carrito no se solape con la barra de búsqueda */
-    right: 20px; /* Alineado con la barra de búsqueda */
+    top: 150px;
+    right: 20px;
     width: 250px;
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 10px;
     background-color: white;
-    z-index: 999; /* Asegura que esté debajo de la barra de búsqueda */
+    z-index: 999;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-/* Notificación de límite de productos dentro del carrito */
 .notification {
     background-color: #f8d7da;
     color: #721c24;
@@ -241,33 +234,28 @@
     display: none;
 }
 
-/* Estilos para las tarjetas de productos */
 .product-list {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    margin-top: 100px; /* Asegura que las tarjetas no queden debajo del carrito */
-    margin-right: 270px; /* Ajuste del margen a la derecha para que las tarjetas no se solapen con el carrito */
+    margin-top: 100px;
+    margin-right: 270px;
 }
 
-/* Resto de estilos para las tarjetas y botones... */
 
-
-
-/* Estilo del título del carrito */
 .cart h3 {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Alinea los elementos dentro del h3 */
+    justify-content: space-between;
     font-size: 1.5rem;
-    margin-bottom: 20px; /* Espacio inferior para separar el contenido del título */
+    margin-bottom: 20px;
 }
 
-/* Estilo para el icono y el contador dentro del carrito */
 .cart-icon {
     display: flex;
     align-items: center;
-    gap: 10px; /* Espacio entre el icono y el contador */
+    gap: 10px;
+    color: #007bff;
 }
 
 .cart-counter {
@@ -281,8 +269,246 @@
     text-align: center;
 }
 
-/* Ajuste para asegurar que el texto "Carrito" se alinee correctamente */
 .cart-title {
-    flex-grow: 1; /* Ocupa el espacio restante dentro del h3 */
+    flex-grow: 1;
     text-align: left;
+    color: #777;
 }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-mode {
+    background-color: white;
+    color: black;
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: white;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    white-space: nowrap;
+    overflow: hidden;
+
+}
+
+.navbar-left .brand {
+    margin: 0;
+    font-size: 16px;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navbar-right input,
+.navbar-right select,
+.navbar-right button {
+    padding: 5px 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+}
+
+.navbar-right input {
+    width: 150px;
+}
+
+.navbar-right select {
+    width: 150px;
+}
+
+.navbar-right button {
+    background-color: #555;
+    color: white;
+    cursor: pointer;
+}
+
+.navbar-right button:hover {
+    background-color: #777;
+}
+
+main {
+    padding: 20px;
+    text-align: center;
+}
+
+main h1 {
+        padding: 2px;
+        text-align: start;
+        margin: 38px 0;
+        font-size: 16px;
+        color: #007bff;
+}
+
+main p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+
+@media (max-width: 768px) {
+    .navbar-left .brand {
+        display: none;
+    }
+
+    .navbar-right {
+        justify-content: space-between;
+        flex-grow: 1;
+    }
+
+    .navbar-right input,
+    .navbar-right select,
+    .navbar-right button {
+        padding: 4px 8px;
+        font-size: 14px;
+        width: auto;
+    }
+
+
+.product-list {
+
+    margin-top: 30px;
+}
+
+
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 5px 10px;
+    }
+
+    .navbar-right input,
+    .navbar-right select,
+    .navbar-right button {
+        padding: 3px 1px;
+        font-size: 12px;
+    }
+
+    .cart {
+        width: 200px;
+        top: 10px;
+        right: 10px;
+        padding: 10px;
+        font-size: 0.9rem;
+        z-index: 1000;
+    }
+
+    .cart h3 {
+        font-size: 1.2rem;
+    }
+
+    .cart .clear-cart-btn {
+        font-size: 0.8rem;
+        padding: 5px;
+    }
+
+    .product-list {
+        margin-right: 0;
+    }
+
+    .cart {
+        margin-top: 45px;
+        width: 150px;
+        top: 200px;
+        right: 10px;
+        padding: 10px;
+        font-size: 0.9rem;
+        z-index: 1000;
+    }
+
+    .cart h3 {
+        font-size: 1.2rem;
+    }
+
+    .cart .clear-cart-btn {
+        font-size: 0.8rem;
+        padding: 5px;
+    }
+
+    .product-list {
+        margin-right: 0;
+        margin-top: 10px;
+    }
+
+    .product-card {
+        padding: 5px;
+        font-size: 0.9rem;
+        width: 180px;
+        margin: 5px;    
+    }
+    main h1 {
+        padding: 2px;
+        text-align: center;
+        margin: 20px 0;
+        font-size: 16px;
+        color: #007bff;
+    }
+
+.search-bar {
+    position: fixed;
+    top: 210px;
+    right: 10px;
+    width: 160px; 
+
+}
+
+.search-bar input {
+    border: none;
+    padding: 3px 5px;
+    font-size: 14px;
+    border-radius: 5px;
+    width: 85px; 
+    box-sizing: border-box;
+}
+
+.search-bar button {
+    background-color: #007bff;
+    color: white;
+    padding: 3px 8px; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px; 
+    white-space: nowrap; 
+}
+
+.search-bar button:hover {
+    background-color: #0056b3;
+}
+
+
+    .products h1 {
+        padding: 2px;
+        text-align: center;
+        margin: 20px 0;
+        font-size: 16px;
+        color: #121213;
+    }
+
+}
+
+
+#total-price {
+    color: #303233;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+
+

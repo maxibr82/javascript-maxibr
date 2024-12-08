@@ -8,13 +8,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- Barra de búsqueda de productos -->
+    <header class="navbar">
+        <div class="navbar-left">
+            <h1 class="brand">¡Selecciona y personaliza el tema!</h1>
+        </div>
+        <div class="navbar-right">
+            <select id="user-select">
+                <option value="" disabled selected>Selecciona un usuario</option>
+            </select>
+            <input type="text" id="username" placeholder="Nuevo usuario">
+            <button id="save-username">Añadir</button>
+            <button id="theme-toggle">🌞/🌙</button>
+        </div>
+    </header>
+    <main>
+        <div id="error-container" style="color: red; display: none;"></div>
+        <h1 id="greeting">¡Bienvenido! </h1>
+    </main>
     <div class="search-bar">
         <input type="text" id="search-input" placeholder="Buscar productos..." onkeyup="searchProducts()">
         <button onclick="searchProducts()">Buscar</button>
     </div>
-
-    <!-- Carrito de compras -->
     <div class="cart">
         <div id="notification" class="notification hidden">Has alcanzado el límite de 20 productos en el carrito.</div>
         <h3>
@@ -29,13 +43,10 @@
         <button onclick="clearCart()" class="clear-cart-btn">Vaciar Carrito</button>
         <p id="total-price">Total: $0.00</p>
     </div>
-
-    <!-- Productos -->
     <div class="products">
         <h1>Nuestros Productos</h1>
         <div id="product-list" class="product-list"></div>
     </div>
-
-    <script src="./javaScript/java.js"></script>
+    <script src="./javaScript/js.js"></script>
 </body>
 </html>
