@@ -1,3 +1,23 @@
+
+/* Estilo general */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-mode {
+    background-color: white;
+    color: black;
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: white;
+}
+
+
 /* Estilos generales para el carrito */
 .cart {
     position: fixed;
@@ -68,13 +88,40 @@
     font-size: 16px;
     margin: 10px 0;
 }
+
 .products h1 {
     padding: 2px;
-    text-align: start;
+    text-align: center;
     margin: 1px 23px;
     font-size: 16px;
+    font-weight: bold;
     color: #a72b2b;
+    position: relative;
+    animation: bounceEffect 2s ease-in-out infinite;
 }
+
+/* Animación de rebote */
+@keyframes bounceEffect {
+    0% {
+        transform: translateY(0);
+    }
+    30% {
+        transform: translateY(-10px); /* Subir un poco */
+    }
+    50% {
+        transform: translateY(0); /* Volver a su lugar */
+    }
+    70% {
+        transform: translateY(-5px); /* Subir un poco más */
+    }
+    100% {
+        transform: translateY(0); /* Volver a su lugar */
+    }
+}
+
+
+
+
 
 .product-card button {
     background-color: #007bff;
@@ -321,33 +368,6 @@
 }
 
 
-/* Estilo general dark */
-body {
-    margin: 0;
-    padding: 0;
-    background-image: url('../asset/imagenes/Carrito4.png');
-    background-size: cover; /* Ajusta el tamaño de la imagen */
-    background-position: center; /* Centra la imagen */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-    font-family: Arial, sans-serif;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-body.light-mode {
-    background-image: url('../asset/imagenes/carrito4.png');
-    background-size: cover; /* Ajusta el tamaño de la imagen */
-    background-position: center; /* Centra la imagen */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-    color: rgb(10, 9, 9);
-}
-
-body.dark-mode {
-    background-image: url('../asset/imagenes/carrito3.png');
-    background-size: cover; 
-    background-position: center;
-    background-repeat: no-repeat;
-    color: rgb(246, 244, 244);
-}
 
 /* Barra de navegación */
 .navbar {
@@ -408,11 +428,11 @@ main {
 }
 
 main h1 {
-        padding: 2px;
-        text-align: start;
-        margin: 2px 0;
-        font-size: 16px;
-        color: #007bff;
+    padding: 2px;
+    text-align: start;
+    margin: 2px 0;
+    font-size: 16px;
+    color: #007bff;
 }
 
 main p {
@@ -446,17 +466,18 @@ main p {
     }
 
 
-.product-list {
+    .product-list {
 
-    margin-top: 30px;
-}
-.products h1 {
-    padding: 2px;
-    text-align: center;
-    margin: 10px 0;
-    font-size: 16px;
-    color: #a72b2b;
-}
+        margin-top: 30px;
+    }
+
+    .products h1 {
+        padding: 2px;
+        text-align: center;
+        margin: 10px 0;
+        font-size: 16px;
+        color: #a72b2b;
+    }
 
 }
 
@@ -545,8 +566,9 @@ main p {
         font-size: 0.9rem;
         /* Reduce el tamaño de texto */
         width: 180px;
-        margin: 5px;    
+        margin: 5px;
     }
+
     main h1 {
         padding: 2px;
         text-align: center;
@@ -555,40 +577,45 @@ main p {
         color: #007bff;
     }
 
-/* Estilos para la barra de búsqueda */
-.search-bar {
-    position: fixed;
-    top: 210px;
-    right: 10px;
-    width: 160px; /* Reducido en un 35% */
+    /* Estilos para la barra de búsqueda */
+    .search-bar {
+        position: fixed;
+        top: 210px;
+        right: 10px;
+        width: 160px;
+        /* Reducido en un 35% */
 
-}
+    }
 
-/* Estilos para el input dentro de la barra de búsqueda */
-.search-bar input {
-    border: none;
-    padding: 3px 5px;
-    font-size: 14px;
-    border-radius: 5px;
-    width: 85px; /* Ajustado para encajar con el botón */
-    box-sizing: border-box;
-}
+    /* Estilos para el input dentro de la barra de búsqueda */
+    .search-bar input {
+        border: none;
+        padding: 3px 5px;
+        font-size: 14px;
+        border-radius: 5px;
+        width: 85px;
+        /* Ajustado para encajar con el botón */
+        box-sizing: border-box;
+    }
 
-/* Estilos para el botón dentro de la barra de búsqueda */
-.search-bar button {
-    background-color: #007bff;
-    color: white;
-    padding: 3px 8px; /* Ajuste del padding para no desbordarse */
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px; /* Ajuste del tamaño de fuente */
-    white-space: nowrap; /* Evitar que el texto se divida */
-}
+    /* Estilos para el botón dentro de la barra de búsqueda */
+    .search-bar button {
+        background-color: #007bff;
+        color: white;
+        padding: 3px 8px;
+        /* Ajuste del padding para no desbordarse */
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        /* Ajuste del tamaño de fuente */
+        white-space: nowrap;
+        /* Evitar que el texto se divida */
+    }
 
-.search-bar button:hover {
-    background-color: #0056b3;
-}
+    .search-bar button:hover {
+        background-color: #0056b3;
+    }
 
 
     .products h1 {
@@ -614,8 +641,12 @@ main p {
 
 
 .swal-popup {
-    font-size: 0.9em; /* Ajusta el tamaño de la fuente */
-    padding: 8px 10px; /* Reduce el padding para que la notificación sea más pequeña */
-    width: auto; /* Permite que la notificación se ajuste automáticamente al contenido */
-    max-width: 280px; /* Limita el ancho máximo */
+    font-size: 0.9em;
+    /* Ajusta el tamaño de la fuente */
+    padding: 8px 10px;
+    /* Reduce el padding para que la notificación sea más pequeña */
+    width: auto;
+    /* Permite que la notificación se ajuste automáticamente al contenido */
+    max-width: 280px;
+    /* Limita el ancho máximo */
 }
