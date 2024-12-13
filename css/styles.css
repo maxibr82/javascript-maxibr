@@ -1,20 +1,22 @@
-
+/* Estilos generales para el carrito */
 .cart {
     position: fixed;
     top: 20px;
     right: 20px;
     width: 250px;
+    /* Ancho fijo del carrito */
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 10px;
     background-color: white;
     z-index: 1000;
+    /* Asegura que el carrito esté por encima de otros elementos */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-
+/* Notificación de límite de productos dentro del carrito */
 .notification {
     background-color: #f8d7da;
     color: #721c24;
@@ -31,13 +33,15 @@
     display: none;
 }
 
-
+/* Estilos para las tarjetas de productos */
 .product-list {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     margin-top: 100px;
+    /* Asegura que las tarjetas no queden debajo del carrito */
     margin-right: 270px;
+    /* Ajuste del margen a la derecha para que las tarjetas no se solapen con el carrito */
 }
 
 .product-card {
@@ -64,6 +68,13 @@
     font-size: 16px;
     margin: 10px 0;
 }
+.products h1 {
+    padding: 2px;
+    text-align: start;
+    margin: 1px 23px;
+    font-size: 16px;
+    color: #a72b2b;
+}
 
 .product-card button {
     background-color: #007bff;
@@ -78,17 +89,24 @@
     background-color: #0056b3;
 }
 
+/* Efecto de transición en el hover */
 .product-card:hover {
     transform: translateY(-10px);
+    /* Eleva la tarjeta ligeramente */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    /* Agrega sombra */
 }
 
+/* Estilos para el carrito */
 #cart-items {
     list-style: none;
     padding: 0;
     max-height: 300px;
+    /* Altura máxima del área de productos en el carrito */
     overflow-y: auto;
+    /* Agrega scroll solo cuando el contenido se desborda */
     margin-bottom: 20px;
+    /* Espacio entre los productos y el total */
 }
 
 .cart-item {
@@ -123,6 +141,7 @@
 .cart-container {
     position: fixed;
     top: 80px;
+    /* Ajusta la distancia para que el carrito no se solape con la barra de búsqueda */
     right: 20px;
     width: 250px;
     padding: 20px;
@@ -130,6 +149,7 @@
     border-radius: 10px;
     background-color: white;
     z-index: 999;
+    /* Asegura que esté debajo de la barra de búsqueda */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -149,6 +169,7 @@
     font-weight: bold;
 }
 
+/* Estilo del contador dentro del título del carrito */
 .cart h3 {
     display: flex;
     align-items: center;
@@ -165,10 +186,13 @@
     font-weight: bold;
 }
 
+/* Estilos para la barra de búsqueda */
 .search-bar {
     position: fixed;
     top: 100px;
+    /* Alineado con el carrito */
     right: 20px;
+    /* Alineado a la derecha */
     width: 250px;
     display: flex;
     align-items: center;
@@ -179,8 +203,10 @@
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+    /* Asegura que esté por encima de los otros elementos */
 }
 
+/* Estilos para el input dentro de la barra de búsqueda */
 .search-bar input {
     border: none;
     padding: 3px 5px;
@@ -190,6 +216,7 @@
     box-sizing: border-box;
 }
 
+/* Estilos para el botón dentro de la barra de búsqueda */
 .search-bar button {
     background-color: #007bff;
     color: white;
@@ -203,21 +230,26 @@
     background-color: #0056b3;
 }
 
+/* Estilos para el carrito */
 .cart {
     position: fixed;
     top: 150px;
+    /* Ajusta la distancia para que el carrito no se solape con la barra de búsqueda */
     right: 20px;
+    /* Alineado con la barra de búsqueda */
     width: 250px;
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 10px;
     background-color: white;
     z-index: 999;
+    /* Asegura que esté debajo de la barra de búsqueda */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
+/* Notificación de límite de productos dentro del carrito */
 .notification {
     background-color: #f8d7da;
     color: #721c24;
@@ -234,28 +266,39 @@
     display: none;
 }
 
+/* Estilos para las tarjetas de productos */
 .product-list {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     margin-top: 100px;
+    /* Asegura que las tarjetas no queden debajo del carrito */
     margin-right: 270px;
+    /* Ajuste del margen a la derecha para que las tarjetas no se solapen con el carrito */
 }
 
+/* Resto de estilos para las tarjetas y botones... */
 
+
+
+/* Estilo del título del carrito */
 .cart h3 {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    /* Alinea los elementos dentro del h3 */
     font-size: 1.5rem;
     margin-bottom: 20px;
+    /* Espacio inferior para separar el contenido del título */
 }
 
+/* Estilo para el icono y el contador dentro del carrito */
 .cart-icon {
     display: flex;
     align-items: center;
     gap: 10px;
     color: #007bff;
+    /* Espacio entre el icono y el contador */
 }
 
 .cart-counter {
@@ -269,29 +312,44 @@
     text-align: center;
 }
 
+/* Ajuste para asegurar que el texto "Carrito" se alinee correctamente */
 .cart-title {
     flex-grow: 1;
+    /* Ocupa el espacio restante dentro del h3 */
     text-align: left;
     color: #777;
 }
 
+
+/* Estilo general dark */
 body {
     margin: 0;
     padding: 0;
+    background-image: url('../asset/imagenes/Carrito4.png');
+    background-size: cover; /* Ajusta el tamaño de la imagen */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
     font-family: Arial, sans-serif;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body.light-mode {
-    background-color: white;
-    color: black;
+    background-image: url('../asset/imagenes/carrito4.png');
+    background-size: cover; /* Ajusta el tamaño de la imagen */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    color: rgb(10, 9, 9);
 }
 
 body.dark-mode {
-    background-color: #121212;
-    color: white;
+    background-image: url('../asset/imagenes/carrito3.png');
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+    color: rgb(246, 244, 244);
 }
 
+/* Barra de navegación */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -300,8 +358,9 @@ body.dark-mode {
     color: white;
     padding: 10px 20px;
     white-space: nowrap;
+    /* Evitar saltos de línea */
     overflow: hidden;
-
+    /* Prevenir desbordamiento */
 }
 
 .navbar-left .brand {
@@ -342,6 +401,7 @@ body.dark-mode {
     background-color: #777;
 }
 
+/* Contenido principal */
 main {
     padding: 20px;
     text-align: center;
@@ -350,7 +410,7 @@ main {
 main h1 {
         padding: 2px;
         text-align: start;
-        margin: 38px 0;
+        margin: 2px 0;
         font-size: 16px;
         color: #007bff;
 }
@@ -361,14 +421,19 @@ main p {
 }
 
 
+
+/* Estilo responsive */
 @media (max-width: 768px) {
     .navbar-left .brand {
         display: none;
+        /* Ocultar completamente el título */
     }
 
     .navbar-right {
         justify-content: space-between;
+        /* Ajustar elementos para ocupar todo el espacio */
         flex-grow: 1;
+        /* Permitir que los elementos crezcan */
     }
 
     .navbar-right input,
@@ -377,6 +442,7 @@ main p {
         padding: 4px 8px;
         font-size: 14px;
         width: auto;
+        /* Adaptar al contenido */
     }
 
 
@@ -384,13 +450,20 @@ main p {
 
     margin-top: 30px;
 }
-
+.products h1 {
+    padding: 2px;
+    text-align: center;
+    margin: 10px 0;
+    font-size: 16px;
+    color: #a72b2b;
+}
 
 }
 
 @media (max-width: 480px) {
     .navbar {
         padding: 5px 10px;
+        /* Reducir el padding general */
     }
 
     .navbar-right input,
@@ -402,53 +475,75 @@ main p {
 
     .cart {
         width: 200px;
+        /* Reduce el ancho del carrito */
         top: 10px;
+        /* Ajusta la posición superior */
         right: 10px;
+        /* Ajusta la posición derecha */
         padding: 10px;
+        /* Reduce el padding interno */
         font-size: 0.9rem;
+        /* Reduce el tamaño de texto */
         z-index: 1000;
+        /* Asegura que el carrito siga visible */
     }
 
     .cart h3 {
         font-size: 1.2rem;
+        /* Reduce el tamaño del título */
     }
 
     .cart .clear-cart-btn {
         font-size: 0.8rem;
+        /* Botón más pequeño */
         padding: 5px;
+        /* Reduce el padding del botón */
     }
 
     .product-list {
         margin-right: 0;
+        /* Elimina el margen derecho */
     }
 
     .cart {
         margin-top: 45px;
         width: 150px;
+        /* Reduce el ancho del carrito */
         top: 200px;
+        /* Ajusta la posición superior */
         right: 10px;
+        /* Ajusta la posición derecha */
         padding: 10px;
+        /* Reduce el padding interno */
         font-size: 0.9rem;
+        /* Reduce el tamaño de texto */
         z-index: 1000;
+        /* Asegura que el carrito siga visible */
     }
 
     .cart h3 {
         font-size: 1.2rem;
+        /* Reduce el tamaño del título */
     }
 
     .cart .clear-cart-btn {
         font-size: 0.8rem;
+        /* Botón más pequeño */
         padding: 5px;
+        /* Reduce el padding del botón */
     }
 
     .product-list {
         margin-right: 0;
+        /* Elimina el margen derecho */
         margin-top: 10px;
     }
 
     .product-card {
         padding: 5px;
+        /* Reduce el padding interno */
         font-size: 0.9rem;
+        /* Reduce el tamaño de texto */
         width: 180px;
         margin: 5px;    
     }
@@ -460,32 +555,35 @@ main p {
         color: #007bff;
     }
 
+/* Estilos para la barra de búsqueda */
 .search-bar {
     position: fixed;
     top: 210px;
     right: 10px;
-    width: 160px; 
+    width: 160px; /* Reducido en un 35% */
 
 }
 
+/* Estilos para el input dentro de la barra de búsqueda */
 .search-bar input {
     border: none;
     padding: 3px 5px;
     font-size: 14px;
     border-radius: 5px;
-    width: 85px; 
+    width: 85px; /* Ajustado para encajar con el botón */
     box-sizing: border-box;
 }
 
+/* Estilos para el botón dentro de la barra de búsqueda */
 .search-bar button {
     background-color: #007bff;
     color: white;
-    padding: 3px 8px; 
+    padding: 3px 8px; /* Ajuste del padding para no desbordarse */
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 14px; 
-    white-space: nowrap; 
+    font-size: 14px; /* Ajuste del tamaño de fuente */
+    white-space: nowrap; /* Evitar que el texto se divida */
 }
 
 .search-bar button:hover {
@@ -498,7 +596,7 @@ main p {
         text-align: center;
         margin: 20px 0;
         font-size: 16px;
-        color: #121213;
+        color: #a72b2b;
     }
 
 }
@@ -506,9 +604,18 @@ main p {
 
 #total-price {
     color: #303233;
+    /* Cambia este color según tus preferencias */
     font-weight: bold;
+    /* Opcional: Hace el texto más destacado */
     font-size: 1rem;
+    /* Opcional: Ajusta el tamaño del texto */
 }
 
 
 
+.swal-popup {
+    font-size: 0.9em; /* Ajusta el tamaño de la fuente */
+    padding: 8px 10px; /* Reduce el padding para que la notificación sea más pequeña */
+    width: auto; /* Permite que la notificación se ajuste automáticamente al contenido */
+    max-width: 280px; /* Limita el ancho máximo */
+}

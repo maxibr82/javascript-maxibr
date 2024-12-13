@@ -1,5 +1,3 @@
-
-
 document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.getElementById('theme-toggle');
     const usernameInput = document.getElementById('username');
@@ -7,6 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const userSelect = document.getElementById('user-select');
     const greeting = document.getElementById('greeting');
     const errorContainer = document.getElementById('error-container');
+    const inputErrorContainer = document.createElement('div');
+
+    inputErrorContainer.style.color = 'red';
+    inputErrorContainer.style.fontSize = '0.9em';
+    inputErrorContainer.style.display = 'none';
+    usernameInput.parentNode.insertBefore(inputErrorContainer, usernameInput.nextSibling);
 
     const users = JSON.parse(localStorage.getItem('users')) || {};
 
@@ -32,15 +36,47 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => (errorContainer.style.display = 'none'), 3000);
     };
 
+    const isValidUsername = (username) => /^[a-zA-Z]{1,13}$/.test(username); // Validación de 13 caracteres
+
+    // Limitar el input a un máximo de 14 caracteres
+    usernameInput.setAttribute('maxlength', '14');
+
+    usernameInput.addEventListener('input', (event) => {
+        const value = usernameInput.value;
+        const sanitizedValue = value.replace(/[^a-zA-Z]/g, '');
+
+        if (value !== sanitizedValue) {
+            inputErrorContainer.textContent = 'Solo se permiten letras.';
+            inputErrorContainer.style.display = 'block';
+        } else if (sanitizedValue.length > 13) { // Limita a 13 caracteres
+            usernameInput.value = sanitizedValue.slice(0, 14); // Limita a 14 caracteres
+            inputErrorContainer.textContent = 'Máximo 13 caracteres.';
+            inputErrorContainer.style.display = 'block';
+        } else {
+            inputErrorContainer.style.display = 'none';
+        }
+
+        usernameInput.value = sanitizedValue;
+    });
+
     saveUsernameButton.addEventListener('click', () => {
         const username = usernameInput.value.trim();
-        username
-            ? (users[username] = users[username] || { theme: 'light-mode' },
-                localStorage.setItem('users', JSON.stringify(users)),
-                greeting.textContent = `¡Bienvenido, ${username}!`,
-                updateUserSelect(),
-                (usernameInput.value = ''))
-            : showError('Por favor, ingresa un nombre válido.');
+
+        if (!isValidUsername(username)) {
+            showError('El nombre de usuario debe contener solo letras y tener un máximo de 13 caracteres.');
+            return;
+        }
+
+        if (users[username]) {
+            showError('Este nombre de usuario ya está en uso. Elige otro.');
+            return;
+        }
+
+        users[username] = users[username] || { theme: 'light-mode' };
+        localStorage.setItem('users', JSON.stringify(users));
+        greeting.textContent = `¡Bienvenido, ${username}!`;
+        updateUserSelect();
+        usernameInput.value = '';
     });
 
     userSelect.addEventListener('change', () => {
@@ -54,19 +90,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     themeToggle.addEventListener('click', () => {
         const selectedUser = userSelect.value;
-        selectedUser
-            ? (() => {
-                const currentTheme = users[selectedUser].theme;
-                const newTheme = currentTheme === 'dark-mode' ? 'light-mode' : 'dark-mode';
-                users[selectedUser].theme = newTheme;
-                localStorage.setItem('users', JSON.stringify(users));
-                applyTheme(newTheme);
-            })()
-            : showError('Selecciona un usuario para cambiar el tema.');
+        if (selectedUser) {
+            const currentTheme = users[selectedUser].theme;
+            const newTheme = currentTheme === 'dark-mode' ? 'light-mode' : 'dark-mode';
+            users[selectedUser].theme = newTheme;
+            localStorage.setItem('users', JSON.stringify(users));
+            applyTheme(newTheme);
+        } else {
+            showError('Selecciona un usuario para cambiar el tema.');
+        }
     });
 });
-
-
 
 
 class Producto {
@@ -79,28 +113,34 @@ class Producto {
 }
 
 const cartItems = document.getElementById("cart-items");
-const notification = document.getElementById("notification");
 const totalPriceDisplay = document.getElementById("total-price");
 const productList = document.getElementById("product-list");
 
-const maxItems = 20; 
-const ivaPercentage = 0.21; 
+const maxItems = 20;
+const ivaPercentage = 0.21;
 
+let productos = [];
 
-let productos = [
-    new Producto(1, "Compu 1", 10.00, "https://via.placeholder.com/150"),
-    new Producto(2, "Producto 2", 15.00, "https://via.placeholder.com/150"),
-    new Producto(3, "Producto 3", 20.00, "https://via.placeholder.com/150"),
-    new Producto(4, "Producto 4", 30.00, "https://via.placeholder.com/150"),
-    new Producto(5, "Producto 5", 30.00, "https://via.placeholder.com/150"),
-    new Producto(6, "Producto 6", 30.00, "https://via.placeholder.com/150")
-];
+async function fetchProductos() {
+    try {
+        const response = await fetch('productos.json');
+        if (!response.ok) {
+            throw new Error('Error al cargar los productos');
+        }
+        const data = await response.json();
+        productos = data.map((producto) => new Producto(producto.id, producto.nombre, producto.precio, producto.imagenUrl));
+        generateProductCards(); // Genera las tarjetas con los productos cargados
+    } catch (error) {
+        console.error(error);
+        showNotification("No se pudieron cargar los productos.");
+    }
+}
 
-
+// Genera las tarjetas de productos
 function generateProductCards(filteredProducts = productos) {
-    productList.innerHTML = ''; 
+    productList.innerHTML = '';
 
-    filteredProducts.forEach(producto => {
+    filteredProducts.forEach((producto) => {
         const productCard = document.createElement("div");
         productCard.classList.add("product-card");
 
@@ -115,11 +155,11 @@ function generateProductCards(filteredProducts = productos) {
     });
 }
 
-
+// Agrega productos al carrito
 function addToCart(id, name, price) {
     if (cartItems.children.length >= maxItems) {
-        showNotification();
-        return; 
+        showNotification("Has alcanzado el número máximo de artículos en el carrito.");
+        return;
     }
 
     const item = document.createElement("li");
@@ -143,52 +183,69 @@ function addToCart(id, name, price) {
 
     updateTotal();
     updateCartCounter();
-    hideNotificationIfNeeded();
+
+    Swal.fire({
+        text: `Producto agregado: ${name} - $${price}`,
+        icon: "success",
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        customClass: {
+            popup: 'swal-popup'
+        }
+    });
 }
 
-
+// Confirma y elimina un producto del carrito
 function confirmAndDeleteItem(item) {
-    const confirmed = confirm("¿Estás seguro de que deseas eliminar este producto del carrito?");
-    if (confirmed) {
-        cartItems.removeChild(item);
-        updateTotal();
-        updateCartCounter();
-        hideNotificationIfNeeded();
-    }
+    Swal.fire({
+        title: "¿Estás seguro?",
+        text: "Este producto será eliminado del carrito.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Sí, eliminar",
+        cancelButtonText: "Cancelar"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            cartItems.removeChild(item);
+            updateTotal();
+            updateCartCounter();
+            Swal.fire("Eliminado", "El producto ha sido eliminado del carrito.", "success");
+        }
+    });
 }
 
+// Vacía el carrito
 function clearCart() {
-    const confirmed = confirm("¿Estás seguro de que deseas vaciar el carrito?");
-    if (confirmed) {
-        cartItems.innerHTML = "";
-        updateTotal();
-        updateCartCounter();
-        hideNotification();
+    if (cartItems.children.length === 0) {
+        // Notificación para carrito vacío
+        showNotification("El carrito ya está vacío.");
+        return;
     }
+
+    Swal.fire({
+        title: "¿Estás seguro?",
+        text: "Todo el contenido del carrito será eliminado.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Sí, vaciar",
+        cancelButtonText: "Cancelar"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            cartItems.innerHTML = "";
+            updateTotal();
+            updateCartCounter();
+            Swal.fire("Carrito vacío", "El carrito ha sido vaciado con éxito.", "success");
+        }
+    });
 }
-
-
-function showNotification() {
-    notification.classList.add("show");
-}
-
-
-function hideNotification() {
-    notification.classList.remove("show");
-}
-
-
-function hideNotificationIfNeeded() {
-    if (cartItems.children.length < maxItems) {
-        hideNotification();
-    }
-}
-
-
+// Actualiza el total del carrito
 function updateTotal() {
     let total = 0;
 
-    Array.from(cartItems.children).forEach(item => {
+    Array.from(cartItems.children).forEach((item) => {
         const price = parseFloat(item.getAttribute("data-price"));
         total += price;
     });
@@ -203,21 +260,45 @@ function updateTotal() {
     `;
 }
 
-
+// Actualiza el contador de productos en el carrito
 function updateCartCounter() {
     const cartCounter = document.getElementById("cart-counter");
     cartCounter.textContent = cartItems.children.length;
 }
 
-
+// Busca productos por nombre
 function searchProducts() {
     const query = document.getElementById("search-input").value.toLowerCase();
-    const filteredProducts = productos.filter(producto =>
+    const filteredProducts = productos.filter((producto) =>
         producto.nombre.toLowerCase().includes(query)
     );
+
+    if (filteredProducts.length === 0) {
+        // Notificación de producto no encontrado
+        showNotification("Productos no encontrados.");
+    }
 
     generateProductCards(filteredProducts);
 }
 
 
-generateProductCards();
+// Notificaciones
+function showNotification(message) {
+    Toastify({
+        text: message,
+        duration: 3000,
+        gravity: "top",
+        position: "right",
+        backgroundColor: "#f44336"
+    }).showToast();
+}
+
+// Llama a fetchProductos cuando la página esté lista
+document.addEventListener('DOMContentLoaded', fetchProductos);
+
+
+
+// Llamado en caso de límite de productos
+function showCartLimitNotification() {
+    showNotification("Has alcanzado el límite de 20 productos en el carrito.");
+}

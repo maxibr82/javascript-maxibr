@@ -6,11 +6,18 @@
     <title>Ecommerce</title>
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Toastify -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Toastify -->
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </head>
 <body>
+
     <header class="navbar">
         <div class="navbar-left">
-            <h1 class="brand">¡Selecciona y personaliza el tema!</h1>
+            <h1 class="brand">¡Bienvenido! Selecciona y personaliza el tema.</h1>
         </div>
         <div class="navbar-right">
             <select id="user-select">
@@ -21,16 +28,18 @@
             <button id="theme-toggle">🌞/🌙</button>
         </div>
     </header>
+
     <main>
         <div id="error-container" style="color: red; display: none;"></div>
         <h1 id="greeting">¡Bienvenido! </h1>
     </main>
+
     <div class="search-bar">
         <input type="text" id="search-input" placeholder="Buscar productos..." onkeyup="searchProducts()">
         <button onclick="searchProducts()">Buscar</button>
     </div>
+
     <div class="cart">
-        <div id="notification" class="notification hidden">Has alcanzado el límite de 20 productos en el carrito.</div>
         <h3>
             <span class="cart-title">Carrito</span>
             <span class="cart-icon">
@@ -43,10 +52,12 @@
         <button onclick="clearCart()" class="clear-cart-btn">Vaciar Carrito</button>
         <p id="total-price">Total: $0.00</p>
     </div>
+
     <div class="products">
         <h1>Nuestros Productos</h1>
         <div id="product-list" class="product-list"></div>
     </div>
+
     <script src="./javaScript/js.js"></script>
 </body>
 </html>
