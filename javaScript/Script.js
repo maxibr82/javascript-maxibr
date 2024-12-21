@@ -36,9 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => (errorContainer.style.display = 'none'), 3000);
     };
 
-    const isValidUsername = (username) => /^[a-zA-Z]{1,13}$/.test(username); // Validación de 13 caracteres
+    const isValidUsername = (username) => /^[a-zA-Z]{1,13}$/.test(username); 
 
-    // Limitar el input a un máximo de 14 caracteres
     usernameInput.setAttribute('maxlength', '14');
 
     usernameInput.addEventListener('input', (event) => {
@@ -48,8 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (value !== sanitizedValue) {
             inputErrorContainer.textContent = 'Solo se permiten letras.';
             inputErrorContainer.style.display = 'block';
-        } else if (sanitizedValue.length > 13) { // Limita a 13 caracteres
-            usernameInput.value = sanitizedValue.slice(0, 14); // Limita a 14 caracteres
+        } else if (sanitizedValue.length > 13) { 
+            usernameInput.value = sanitizedValue.slice(0, 14); 
             inputErrorContainer.textContent = 'Máximo 13 caracteres.';
             inputErrorContainer.style.display = 'block';
         } else {
@@ -129,14 +128,14 @@ async function fetchProductos() {
         }
         const data = await response.json();
         productos = data.map((producto) => new Producto(producto.id, producto.nombre, producto.precio, producto.imagenUrl));
-        generateProductCards(); // Genera las tarjetas con los productos cargados
+        generateProductCards(); 
     } catch (error) {
-        console.error(error);
-        showNotification("No se pudieron cargar los productos.");
+        showNotification("No se pudieron cargar los productos."); 
     }
 }
 
-// Genera las tarjetas de productos
+
+
 function generateProductCards(filteredProducts = productos) {
     productList.innerHTML = '';
 
@@ -155,7 +154,6 @@ function generateProductCards(filteredProducts = productos) {
     });
 }
 
-// Agrega productos al carrito
 function addToCart(id, name, price) {
     if (cartItems.children.length >= maxItems) {
         showNotification("Has alcanzado el número máximo de artículos en el carrito.");
@@ -198,7 +196,7 @@ function addToCart(id, name, price) {
     });
 }
 
-// Confirma y elimina un producto del carrito
+
 function confirmAndDeleteItem(item) {
     Swal.fire({
         title: "¿Estás seguro?",
@@ -217,10 +215,9 @@ function confirmAndDeleteItem(item) {
     });
 }
 
-// Vacía el carrito
+
 function clearCart() {
     if (cartItems.children.length === 0) {
-        // Notificación para carrito vacío
         showNotification("El carrito ya está vacío.");
         return;
     }
@@ -241,7 +238,7 @@ function clearCart() {
         }
     });
 }
-// Actualiza el total del carrito
+
 function updateTotal() {
     let total = 0;
 
@@ -260,13 +257,13 @@ function updateTotal() {
     `;
 }
 
-// Actualiza el contador de productos en el carrito
+
 function updateCartCounter() {
     const cartCounter = document.getElementById("cart-counter");
     cartCounter.textContent = cartItems.children.length;
 }
 
-// Busca productos por nombre
+
 function searchProducts() {
     const query = document.getElementById("search-input").value.toLowerCase();
     const filteredProducts = productos.filter((producto) =>
@@ -274,7 +271,6 @@ function searchProducts() {
     );
 
     if (filteredProducts.length === 0) {
-        // Notificación de producto no encontrado
         showNotification("Productos no encontrados.");
     }
 
@@ -282,7 +278,7 @@ function searchProducts() {
 }
 
 
-// Notificaciones
+
 function showNotification(message) {
     Toastify({
         text: message,
@@ -293,12 +289,9 @@ function showNotification(message) {
     }).showToast();
 }
 
-// Llama a fetchProductos cuando la página esté lista
 document.addEventListener('DOMContentLoaded', fetchProductos);
 
 
-
-// Llamado en caso de límite de productos
 function showCartLimitNotification() {
     showNotification("Has alcanzado el límite de 20 productos en el carrito.");
 }

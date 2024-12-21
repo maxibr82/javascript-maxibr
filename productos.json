@@ -1,26 +1,26 @@
 [
     {
         "id": 1,
-        "nombre": "Producto A",
+        "nombre": "Multimetro",
         "precio": 100,
-        "imagenUrl": "asset/productos/Tester.jpg"
+        "imagenUrl": "asset/productos/Producto1.png"
     },
     {
         "id": 2,
-        "nombre": "Producto B",
+        "nombre": "Osciloscopio",
         "precio": 150,
-        "imagenUrl": "https://via.placeholder.com/150"
+        "imagenUrl": "asset/productos/Producto2.jpg"
     },
     {
         "id": 3,
-        "nombre": "Producto C",
+        "nombre": "Destornillador",
         "precio": 200,
-        "imagenUrl": "https://via.placeholder.com/150"
+        "imagenUrl": "asset/productos/Producto3.png"
     },
     {
         "id": 3,
-        "nombre": "Producto C",
+        "nombre": "Medidor de corriente",
         "precio": 200,
-        "imagenUrl": "https://via.placeholder.com/150"
+        "imagenUrl": "asset/productos/Producto4.jpg.png"
     }
 ]
