@@ -3,7 +3,7 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
-    background-image: url('../asset/imagenes/DarkModo8.webp');
+    background-image: url('../asset/imagenes/LightModo.webp');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -74,6 +74,7 @@ body.dark-mode {
     border: 1px solid #b9b8bb;
     border-radius: 10px;
     text-align: center;
+    background-color: rgba(255, 255, 255, 0.309);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -86,11 +87,13 @@ body.dark-mode {
 .product-card h2 {
     font-size: 18px;
     margin: 10px 0;
+
 }
 
 .product-card p {
     font-size: 16px;
     margin: 10px 0;
+
 }
 
 .products h1 {
